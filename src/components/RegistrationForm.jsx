@@ -1,14 +1,19 @@
-import { useState } from 'react';
+import { useLocalStorage } from "../hooks/useLocalStorage";
 
 function RegistrationForm() {
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [email, setEmail] = useState('');
-  const [bio, setBio] = useState('');
+  const [firstName, setFirstName] = useLocalStorage('draft:firstName', '');
+  const [lastName, setLastName] = useLocalStorage('draft:lastName', '');
+  const [email, setEmail] = useLocalStorage('draft:email', '');
+  const [bio, setBio] = useLocalStorage('draft:bio', '');
 
   const handleSubmit = (e) => {
     e.preventDefault();
     alert('Success');
+
+    setFirstName('');
+    setLastName('');
+    setEmail('');
+    setBio('');
   };
 
   return (
